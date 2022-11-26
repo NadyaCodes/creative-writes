@@ -5,3 +5,5 @@ export default function Nav() {
     </div>
   );
 }
+
+//currently at 12:48 with https://www.youtube.com/watch?v=o7jTN4s78GQ&t=16s
