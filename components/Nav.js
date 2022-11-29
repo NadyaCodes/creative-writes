@@ -17,5 +17,3 @@ export default function Nav() {
     </nav>
   );
 }
-
-//currently at 27:13 with https://www.youtube.com/watch?v=o7jTN4s78GQ&t=16s
