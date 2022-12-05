@@ -40,3 +40,5 @@ export default function Post() {
     </div>
   );
 }
+
+// currently at 1:08:07 of https://www.youtube.com/watch?v=o7jTN4s78GQ&t=16s
