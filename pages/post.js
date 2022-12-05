@@ -1,15 +1,26 @@
-import { auth } from "../utils/Firebase";
+import { auth, db } from "../utils/Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 export default function Post() {
   //Form state
   const [post, setPost] = useState({ description: "" });
 
+  const [user, loading] = useAuthState(auth);
   //Submit Post
   const submitPost = async (e) => {
     e.preventDefault();
+    //Make a new post
+    const collectionRef = collection(db, "posts");
+    await addDoc(collectionRef, {
+      ...post,
+      timestamp: serverTimestamp(),
+      user: user.uid,
+      avater: user.photoURL,
+      username: user.displayName,
+    });
   };
   return (
     <div className="my-20 p-12 shadow-lg rounded-lg max-w-md mx-auto">
@@ -41,4 +52,4 @@ export default function Post() {
   );
 }
 
-// currently at 1:08:07 of https://www.youtube.com/watch?v=o7jTN4s78GQ&t=16s
+// currently at 1:13:07 of https://www.youtube.com/watch?v=o7jTN4s78GQ&t=16s
