@@ -16,8 +16,22 @@ export default function Post() {
     e.preventDefault();
     //Run checks for description
     if (!post.description) {
-      toast.error("Description Field Empty 😅");
+      toast.error("Description Field Empty 😅", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1500,
+      });
+
+      return;
     }
+    if (post.description.length > 300) {
+      toast.error("Description too long 😅", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1500,
+      });
+
+      return;
+    }
+
     //Make a new post
     const collectionRef = collection(db, "posts");
     await addDoc(collectionRef, {
