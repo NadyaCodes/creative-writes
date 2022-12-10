@@ -38,7 +38,7 @@ export default function Post() {
       ...post,
       timestamp: serverTimestamp(),
       user: user.uid,
-      avater: user.photoURL,
+      avatar: user.photoURL,
       username: user.displayName,
     });
     setPost({ description: "" });
