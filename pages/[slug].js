@@ -46,18 +46,21 @@ export default function Details() {
   //Get Comments
   const getComments = async () => {
     const docRef = doc(db, "posts", routeData.id);
-    // const docSnap = await getDoc(docRef);
-    // setAllMessages(docSnap.data().comments);
+
     const unsubscribe = onSnapshot(docRef, (snapshot) => {
       setAllMessages(snapshot.data().comments);
     });
     return unsubscribe;
+
+    //this version would get it once instead of updating live:
+    // const docSnap = await getDoc(docRef);
+    // setAllMessages(docSnap.data().comments);
   };
 
   useEffect(() => {
     if (!router.isReady) return;
     getComments();
-  }, []);
+  }, [router.isReady]);
 
   return (
     <div>
